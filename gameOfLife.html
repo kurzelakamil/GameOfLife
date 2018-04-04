@@ -14,140 +14,68 @@
             background-color: black;
         }
 
+        .button {
+            width: 100px;
+            display: inline;
+            margin-left: 1px;
+        }
+
+        .turn {
+            display: inline;
+            margin-left: 425px;
+        }
+
+        .secondbutton {
+            width: 10px;
+            margin-left: 1px;
+        }
+
+        .buttonplay {
+            box-sizing: border-box;
+            width: 10px;
+            height: 10px;
+            border-style: solid;
+            border-width: 10px 0px 10px 17px;
+            border-color: white white white #202020;
+            background-color: white;
+            padding: 0;
+            outline: none;
+        }
+
+        .buttonpause {
+            box-sizing: border-box;
+            width: 21px;
+            height: 22px;
+            margin-top: 3.5px;
+            border-style: double;
+            border-width: 0px 0px 0px 21px;
+            border-color: #202020;
+            background-color: white;
+            padding: 0;
+            outline: none;
+        }
+
     </style>
 
 </head>
 
 <body>
 
+
     <table>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
 
     </table>
     
-    <button>Next Turn</button>
-<script src="gameOfLife.js"></script>
-    
-    
+    <div class="button" style="visibility: hidden">
+        <button>Next Turn</button>
+    </div>
+    <div class="turn"></div>
+    <div class="secondbutton" style="visibility: hidden">
+        <button class="buttonplay"></button>
+    </div>
+    <script src="gameOfLife.js"></script>
+
+
 </body>
 
 
