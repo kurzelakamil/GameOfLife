@@ -12,16 +12,14 @@ document.addEventListener("DOMContentLoaded", function () {
     var deadCellsNumber = setMaxNumberOfDeadCells();
     drawTable(rows, columns);
     fillCells(rows, columns);
-    button.addEventListener("click", function () {
-        newTurn();
-    })
+    button.addEventListener("click", newTurn);
 
 
     //function checks if dead cells number is smaller than table size
 
     function setMaxNumberOfDeadCells() {
         var maxDead = parseInt(rows) * parseInt(columns);
-        var deadCellsInput = prompt("Dead Cells: ", maxDead / 2);
+        var deadCellsInput = prompt("Dead Cells: ", Math.round(maxDead / 2));
         if (deadCellsInput > maxDead) {
             alert("Dead Cells number bigger than table size");
             return setMaxNumberOfDeadCells();
@@ -46,7 +44,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
     //skipButton set interval to automatically rollover turns, another press clear interval
 
-    skipButton.addEventListener("click", function () {
+    skipButton.addEventListener("click", play);
+
+
+    function play() {
         if (!interval) {
             interval = setInterval(function () {
                 newTurn();
@@ -57,7 +58,7 @@ document.addEventListener("DOMContentLoaded", function () {
             interval = null;
             document.querySelector(".secondbutton button").className = "buttonplay"
         }
-    })
+    }
 
     //function puts ID to all cells, then uses function 'putClassToCell' to check which cells are dead and which are alive
 
@@ -117,6 +118,8 @@ document.addEventListener("DOMContentLoaded", function () {
     //function changes classes from 'dead' to 'live' and vice versa
     function newTurn() {
         turnCounter++;
+        var deadCells = document.querySelectorAll(".dead");
+        var aliveCells = document.querySelectorAll(".live");
         var newAlive = checkDead();
         var newDead = checkAlive();
         newDead.forEach(function (e) {
@@ -127,7 +130,30 @@ document.addEventListener("DOMContentLoaded", function () {
             e.classList.add("live");
             e.classList.remove("dead");
         })
-        document.querySelector(".turn").innerHTML = "Turn: " + turnCounter;
+
+        var newDeadCells = document.querySelectorAll(".dead");
+        var newAliveCells = document.querySelectorAll(".live");
+        if (compareTables(deadCells, newDeadCells)) {
+            alert('Game is over, nothing more can be changed. You needed ' + (turnCounter - 1) + ' turns to finish game');
+            clearInterval(interval);
+            button.removeEventListener('click', newTurn);
+            skipButton.removeEventListener('click', play);
+            document.querySelector(".secondbutton button").className = "buttonplay"
+        } else {
+            document.querySelector(".turn").innerHTML = "Turn: " + turnCounter;
+        }
+    }
+
+    //function checks if game can be continued
+    function compareTables(oldTab, newTab) {
+        if (oldTab.length === newTab.length) {
+            for (var i = 0; i < oldTab.length; i++) {
+                if (oldTab[i] != newTab[i]) {
+                    return false;
+                }
+            }
+            return true;
+        }
     }
 
     //function checks for each dead cell if it can be alive
