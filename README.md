@@ -12,3 +12,5 @@ It is checking as below:
 User have choice - step each turn manually by 'Next turn' button or set autochanging. 
 
 When game is finished(no more cells can be changed), program displays alert about end of game and provides number of played turns
+
+JavaScript
